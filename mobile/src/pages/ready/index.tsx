@@ -4,17 +4,17 @@ import { Image, ImageBackground, StyleSheet, Text, View, ScrollView } from 'reac
 import { RectButton, TextInput } from 'react-native-gesture-handler';
 
 
+
 const Home = () => {
 
   const navigation = useNavigation();
 
-  function handleNavigateToPoints() {
-    navigation.navigate('ReadyToGo');
+  function handleNavigateMap() {
+    navigation.navigate('Map');
   }
 
   return (
     <>
-
       <ImageBackground source={require('../../assets/home-background.png')} style={styles.container} imageStyle={{ width: 274, height: 368, opacity: .05 }}>
         <View style={styles.main}>
           <Image source={require('../../assets/icon.png')} style={styles.img} />
@@ -23,42 +23,32 @@ const Home = () => {
 
         <View style={styles.form}>
           <View >
-            
-            <View style={styles.formhead}>
-              <Text style={styles.subTitle}>Cadastro</Text>
+            <View style={styles.contentHead}>
+              <Text style={styles.subTitle}>Prontinho</Text>
             </View>
 
-            <ScrollView style={styles.scroll}>
-              <Text style={styles.Textlabel}>Nome completo</Text>
-              <TextInput style={styles.input} />
 
-              <Text style={styles.Textlabel}>Cpf</Text>
-              <TextInput style={styles.input} />
+            <View style={styles.description} >
+              <Text style={styles.subDescription}>
+                Cadastro Steelback completo,
+                agora é  buscar os pontos de coleta de embalagens de aço
+                e começar a juntar seu Steelpoints e ganhar beneficios.
+                </Text>
+            </View>
 
-              <Text style={styles.Textlabel}>Cep</Text>
-              <TextInput style={styles.input} />
+            <View style={styles.imgContainer}>
+              <Image style={styles.img} source={require('../../assets/qrCode.png')} />
+            </View>
 
-              <Text style={styles.Textlabel}>Telefone</Text>
-              <TextInput style={styles.input} />
-
-              <Text style={styles.Textlabel}>Email</Text>
-              <TextInput style={styles.input} />
-
-              <Text style={styles.Textlabel}>Senha</Text>
-              <TextInput style={styles.input} />
-
-              <RectButton style={styles.button} onPress={handleNavigateToPoints}>
-                <Text style={styles.buttonText}>
-                  CADASTRAR
+            <RectButton style={styles.button} onPress={handleNavigateMap}>
+              <Text style={styles.buttonText}>
+                Ir para a página principal
               </Text>
 
-              </RectButton>
-            </ScrollView>
+            </RectButton>
           </View>
         </View>
       </ImageBackground>
-
-
     </>
 
   );
@@ -71,11 +61,6 @@ const styles = StyleSheet.create({
     padding: 0,
     backgroundColor: '#0E0E0E',
   },
-  scroll: {
-    marginTop: 50,
-    borderWidth:0,
-    overflow: 'hidden',
-  },
 
   main: {
     flex: 1,
@@ -85,9 +70,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 0,
   },
-  formhead: {
+
+  contentHead: {
     alignItems: 'center'
   },
+
   form: {
     flex: 2,
     backgroundColor: '#28407C',
@@ -97,19 +84,12 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 25,
     borderTopStartRadius: 25,
     marginTop: 20,
-    marginBottom:-5
+    marginBottom: -5
   },
 
   Textlabel: {
     color: '#FFF'
   },
-
-  // centerContent: {
-  //   marginTop: 30,
-  //   flex: .2,
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // },
 
   title: {
     color: '#FFFFFF',
@@ -121,26 +101,31 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     color: '#FFFFFF',
-    fontSize: 32,
+    fontSize: 36,
     fontFamily: 'Ubuntu_700Bold',
     maxWidth: 260,
     marginTop: 10,
-    marginLeft:2,
+    marginLeft: 2,
   },
 
-  // description: {
-  //   color: '#6C6C80',
-  //   fontSize: 16,
-  //   marginTop: 16,
-  //   fontFamily: 'Roboto_400Regular',
-  //   maxWidth: 260,
-  //   lineHeight: 24,
-  // },
+  description: {
+    color: '#6C6C80',
+    fontSize: 16,
+    marginTop: 16,
+    fontFamily: 'Roboto_400Regular',
+    maxWidth: 260,
+    lineHeight: 24,
+  },
 
-  // footer: {
-  //   flex: 1,
-  //   alignItems: 'center'
-  // },
+  subDescription: {
+    color: '#FFF',
+    textAlign: 'justify',
+    fontSize: 15,
+  },
+  imgContainer: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 
   img: {
     marginTop: 30,
@@ -195,12 +180,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     lineHeight: 44,
-    color: '#1C3470',
-    borderRadius:25,
-    backgroundColor: '#FFF',
+    color: '#FFF',
     fontFamily: 'Roboto_500Medium',
     fontSize: 16,
-    marginBottom:20,
+    marginBottom: 20,
   }
 });
 
