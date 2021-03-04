@@ -4,18 +4,6 @@
 ## Requisitos
 - [Node](https://nodejs.org/en/download/)
 - [Yarn](https://yarnpkg.com/lang/en/docs/install)
-
-## Clonagem e Instalação
-Para clonar este projeto em seu repositorio local, você ira precisar do [Git](https://git-scm.com/ "Git"), uma vez instalado corretamente você pode executar o comando:
-```bash
-$ git clone https://innersource.accenture.com/scm/a1673/acn-boilerplate-node-arch.git
-```
-por fim execute o comando para entrar na pasta que foi criada e instalar as dependencias do projeto:
-```bash
-$ cd acn-boilerplate-node-arch
-$ yarn install
-```
-
 ## Comandos
 
 Para iniciar a aplicação em ambiente de desenvolvimento basta executar o comando: `yarn dev` <br>Todavia existe alguns comandos que podem lhe ajudar a realizar outras tarefas como testes de integração, testes unitários, etc. Uma lista completa sobre os comandos de inicialização pode ser vista abaixo:
