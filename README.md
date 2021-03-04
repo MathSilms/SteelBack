@@ -44,6 +44,6 @@ Comandos  | Tarefa a ser realizada
 
 ## Autores/Revisores da v1
 
-👤 **Matheus Oliveira <>** <br>
+👤 **Matheus Oliveira <https://www.linkedin.com/in/mathsilms/>** <br>
 
 
