@@ -42,9 +42,8 @@ Comandos  | Tarefa a ser realizada
 `graphql` | integrar as soluções com o graphql;
 `firestore` | integrar as soluções do Firebase da Google;
 
-## Autores/Revisores da v2
+## Autores/Revisores da v1
 
-👤 **Cláudio Rapôso <>** <br>
 👤 **Matheus Oliveira <>** <br>
 
 
