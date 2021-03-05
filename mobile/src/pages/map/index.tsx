@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, ScrollView, Image, Alert } from 'react-native';
 import Constants from 'expo-constants'
 import { Feather as Icon } from '@expo/vector-icons'
-import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 import { SvgUri } from 'react-native-svg'
 import api from '../../services/api'
 import * as Location from 'expo-location'
-import { TextInput } from 'react-native-gesture-handler';
+import { RectButton, TextInput } from 'react-native-gesture-handler';
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+
 
 interface Item {
   id: number,
@@ -25,10 +29,15 @@ interface Point {
   }[];
 }
 
+interface Toogle {
+  select: boolean;
+}
+
 
 const Points = () => {
   const [Items, setItems] = useState<Item[]>([]);
   const [points, setPoints] = useState<Point[]>([]);
+  const [select, setSelect] = useState<Toogle>();
   const [selectedItems, setSelectedItems] = useState<number[]>([])
   const [initialPosition, setInicialPositial] = useState<[number, number]>([0, 0]);
 
@@ -80,8 +89,13 @@ const Points = () => {
     navigation.goBack();
   }
 
-  function handleNavigateToDetail(id: number) {
+  function handleNavigateToProfile(id: number) {
     navigation.navigate('Detail', { point_id: id });
+  }
+
+  function handleNavigateToCupons() {
+    navigation.navigate('Cupons');
+
   }
 
   function handleSelectItem(id: number) {
@@ -104,7 +118,7 @@ const Points = () => {
 
         <View style={styles.header}>
           <TouchableOpacity onPress={handleNavigateBack}>
-            <Icon name="arrow-left" size={20} color="#34cb79" />
+            <Icon name="arrow-left" size={20} color="white" />
           </TouchableOpacity>
           <View style={styles.searchBar}>
             <Text style={styles.searchTitle}>{`   Buscar postos de coleta`}</Text>
@@ -141,7 +155,7 @@ const Points = () => {
           )}
         </View>
       </View>
-      <View style={styles.itemsContainer}>
+      {/* <View style={styles.itemsContainer}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -162,6 +176,23 @@ const Points = () => {
             </TouchableOpacity>
           })}
         </ScrollView>
+      </View> */}
+
+      <View style={styles.footer}>
+        <View style={styles.menu}>
+          <RectButton style={styles.button} >
+            <AntDesign name="home" size={40} color="white" />
+          </RectButton>
+
+          <RectButton style={styles.button} onPress={handleNavigateToCupons}>
+            <MaterialIcons name="card-giftcard" size={40} color="#001342" />
+          </RectButton>
+
+          <RectButton style={styles.button} onPress={handleNavigateToProfile}>
+            <Ionicons name="ios-person-outline" size={40} color="#001342" />
+          </RectButton>
+
+        </View>
       </View>
     </>
   );
@@ -177,10 +208,12 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#28407C',
     padding: 10,
+    display: 'flex',
+    borderRadius: 30,
     //position: 'relative',
   },
   searchBar: {
-    padding: 10,
+    padding: 5,
   },
 
   title: {
@@ -192,7 +225,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Ubuntu_700Bold',
     color: '#FFF',
-    marginTop: 24,
+    marginTop: 15,
   },
 
   description: {
@@ -210,11 +243,41 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     fontFamily: 'Roboto_400Regular',
   },
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    margin: 15,
+    marginTop: 18,
+    width: 50,
+    flexDirection: 'row',
+    overflow: 'hidden',
+
+  },
+
+  buttonIcon: {
+    height: 60,
+    width: 60,
+    //backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  // buttonText: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   textAlign: 'center',
+  //   color: '#FFF',
+  //   fontFamily: 'Roboto_500Medium',
+  //   fontSize: 12,
+  // },
 
   mapContainer: {
     flex: 1,
     width: '100%',
-    borderRadius: 10,
+    height: '100%',
+    //borderRadius: 10,
     overflow: 'hidden',
     marginTop: 16,
   },
@@ -234,7 +297,7 @@ const styles = StyleSheet.create({
     height: 70,
     backgroundColor: '#34CB79',
     flexDirection: 'column',
-    borderRadius: 8,
+    // borderRadius: 8,
     overflow: 'hidden',
     alignItems: 'center'
   },
@@ -259,22 +322,22 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
 
-  item: {
-    backgroundColor: '#fff',
-    borderWidth: 2,
-    borderColor: '#eee',
-    height: 120,
-    width: 120,
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingTop: 20,
-    paddingBottom: 16,
-    marginRight: 8,
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  // item: {
+  //   backgroundColor: '#fff',
+  //   borderWidth: 2,
+  //   borderColor: '#eee',
+  //   height: 120,
+  //   width: 120,
+  //   //  borderRadius: 8,
+  //   paddingHorizontal: 16,
+  //   paddingTop: 20,
+  //   paddingBottom: 16,
+  //   marginRight: 8,
+  //   alignItems: 'center',
+  //   justifyContent: 'space-between',
 
-    textAlign: 'center',
-  },
+  //   textAlign: 'center',
+  // },
 
   selectedItem: {
     borderColor: '#34CB79',
@@ -285,6 +348,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto_400Regular',
     textAlign: 'center',
     fontSize: 13,
+  },
+  footer: {
+    backgroundColor: '#28407C',
+    width: '100%',
+    height: 70,
+  },
+  menu: {
+    //backgroundColor: '#28407C, 100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

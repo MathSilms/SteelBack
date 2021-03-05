@@ -7,7 +7,8 @@ import Register from './pages/register';
 import Points from './pages/points';
 import Detail from './pages/detail';
 import ReadyToGo from './pages/ready';
-import Map from './pages/map';
+import Maps from './pages/map';
+import Cupons from './pages/cupons';
 
 const AppStack = createStackNavigator();
 
@@ -27,7 +28,8 @@ const Routes = () =>{
                 <AppStack.Screen name="Points" component={Points}/>
                 <AppStack.Screen name="Detail" component={Detail}/>
                 <AppStack.Screen name="ReadyToGo" component={ReadyToGo}/>
-                <AppStack.Screen name="Map" component={Map}/>
+                <AppStack.Screen name="Map" component={Maps}/>
+                <AppStack.Screen name="Cupons" component={Cupons}/>
             </AppStack.Navigator>
         </NavigationContainer>
     )

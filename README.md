@@ -26,7 +26,7 @@ Comandos  | Tarefa a ser realizada
 `yarn test:integration` | Faz a aplicação dos testes de integração apenas
 `yarn test:covarage` | Faz a aplicação dos testes unitários + integração e retorna a cobertura completa de testes
 
-## Release 2.1.0
+## Release 1.0
 `views` | inserido o conceito de views para o retorno das response da API
 `repositories` | local onde será configurado os tipos de requisições as apis externas e a banco de dados
 `config/api.ts` | padronização das baseUrl das chamadas a api externas

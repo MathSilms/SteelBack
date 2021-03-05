@@ -2,14 +2,14 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { RectButton, TextInput } from 'react-native-gesture-handler';
-
+import { AntDesign } from '@expo/vector-icons'; 
 
 
 const Home = () => {
 
   const navigation = useNavigation();
 
-  function handleNavigateMap() {
+  function handleNavigateMaps() {
     navigation.navigate('Map');
   }
 
@@ -40,9 +40,10 @@ const Home = () => {
               <Image style={styles.img} source={require('../../assets/qrCode.png')} />
             </View>
 
-            <RectButton style={styles.button} onPress={handleNavigateMap}>
+            <RectButton style={styles.button} onPress={handleNavigateMaps}>
               <Text style={styles.buttonText}>
-                Ir para a página principal
+                {`Ir para a página principal `}
+                <AntDesign name="arrowright" size={14} color="white" />
               </Text>
 
             </RectButton>
