@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import HttpController from '@commons/controllers/http.controller';
-import SessionsService from '../services/transactions.service';
+import CreateTransactionsService from '../services/createTransactions.service';
+import GetBalanceService from '@api/modules/users/services/getBalance.service';
 
 class TransactionController extends HttpController {
   public create = async (
@@ -12,13 +13,18 @@ class TransactionController extends HttpController {
 
     const { user, business } = req.params
 
-    const createSession = new SessionsService();
+    const getBalance = new GetBalanceService();
 
-    const session = await createSession.exec({ 
+    const balance = await getBalance.exec()
+
+    const createTransaction = new CreateTransactionsService();
+
+    const session = await createTransaction.exec({ 
       type,
       total_weighting,
       user,
-      business
+      business,
+      balance,
      });
 
     this.sendResponse(res, next, session);

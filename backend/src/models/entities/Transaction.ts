@@ -1,3 +1,4 @@
+import business from '@api/modules/business';
 import {
     Entity,
     Column,
@@ -21,13 +22,19 @@ import Business from './Business';
     @Column()
     type: 'income' | 'outcome';
   
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, user => user.id)
     @JoinColumn({ name: 'user_id' })
     user: User;
 
-    @ManyToOne(() => Business)
+    @ManyToOne(() => Business, business => business.id)
     @JoinColumn({ name: 'business_id' })
     business: Business;
+
+    @Column()
+    user_id: string;
+
+    @Column()
+    business_id: string;
   
     @CreateDateColumn()
     created_at: Date;

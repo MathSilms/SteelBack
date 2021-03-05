@@ -5,7 +5,7 @@ class HealthcheckRouter extends BaseRouter {
   public controller = UsersController;
 
   initialize(): void {
-    this.post('/', this.controller.create);
+    this.post('/user/:user/business/:business', this.controller.create);
   }
 }
 

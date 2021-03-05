@@ -28,17 +28,9 @@ export default class CreateBusiness1614765487629 implements MigrationInterface {
                 name: "email",
                 type: "varchar"
               },
-              {
-                name: "razao_social",
-                type: "varchar"
-            },
             {
                 name: "cnpj",
                 type: "varchar"
-            },
-            {
-                name: "cep",
-                type: "varchar",
             },
             {
                 name: "is_cooperative",

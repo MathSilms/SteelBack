@@ -28,10 +28,6 @@ export default class CreateUser1612275354894 implements MigrationInterface {
             type: "varchar"
           },
           {
-              name: "cep",
-              type: "varchar"
-          },
-          {
               name: "cpf",
               type: "varchar"
           },

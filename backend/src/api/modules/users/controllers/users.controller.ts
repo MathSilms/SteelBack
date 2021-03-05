@@ -2,7 +2,8 @@ import { NextFunction, Request, Response } from 'express';
 import HttpController from '@commons/controllers/http.controller';
 import UsersService from '../services/createUsers.service';
 import GetUsersService from '../services/getUser.service';
-import transactionsService from '../services/transactions.service';
+import GetBalanceService from '../services/getBalance.service';
+import getTransactionsService from '../services/getTransactions.service';
 
 class UsersController extends HttpController {
   public create = async (
@@ -32,13 +33,17 @@ class UsersController extends HttpController {
 
     const getUser = new GetUsersService();
 
-    const createBalance = new transactionsService();
+    const getTransactions = new getTransactionsService();
+
+    const getBalance = new GetBalanceService();
 
     const user = await getUser.exec({ id });
 
-    const balance = await createBalance.exec();
+    const transactions = await getTransactions.exec({ id })
 
-    this.sendResponse(res, next, {user, balance});
+    const balance = await getBalance.exec();
+
+    this.sendResponse(res, next, {user, transactions, balance});
   };
 }
 
