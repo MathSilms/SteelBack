@@ -27,14 +27,14 @@ createConnection()
 //cache();
 
 const server = http.createServer(App);
-server.listen(Number(process.env.APP_PORT) | 3333);
+server.listen(process.env.APP_PORT || 3333);
 
 server.on('listening', (): void => {
   logger.geral.info({
     message: 'SYSTEM',
     service: 'api',
     environment: `local`,
-    port: `${Number(process.env.APP_PORT) | 3333}`,
+    port: `${Number(process.env.APP_PORT) || 3333}`,
   });
 });
 
