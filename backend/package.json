@@ -1,6 +1,9 @@
 {
   "name": "acn-boilerplate-node-arch-v2",
   "version": "2.1.0",
+  "engines": {
+    "node": "14.x"
+  },
   "main": "src/index.ts",
   "repository": "https://innersource.accenture.com/projects/A1673/repos/portal-monitoramento-api/browse",
   "author": "Ruan Morais <ruan.morais@accenture.com>",
